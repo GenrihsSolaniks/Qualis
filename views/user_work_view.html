@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DocAi Check - Work View</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #cfd8d6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      padding: 20px 40px;
+    }
+
+    .main {
+      flex: 3;
+      margin-right: 30px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .top-bar .left, .top-bar .right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .content-box {
+      background-color: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-left {
+      left: 10px;
+    }
+
+    .nav-right {
+      right: 10px;
+    }
+
+    .page-number {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .stars {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .sidebar {
+      flex: 1.2;
+    }
+
+    .sidebar .donate {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .comment-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .comment strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .comment-input {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background-color: #f7f7f7;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="main">
+      <div class="top-bar">
+        <div class="left">
+          <button onclick="history.back()">⟵</button>
+          <span><strong>Author name</strong></span>
+        </div>
+        <div class="right">
+          <span>Rating: 4.8</span>
+          <select>
+            <option>Profile</option>
+            <option>Settings</option>
+            <option>Log out</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <button class="nav-button nav-left">←</button>
+        <p>
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration...<br><br>
+          The generated Lorem Ipsum is therefore always free from repetition...
+        </p>
+        <button class="nav-button nav-right">→</button>
+        <div class="page-number">21</div>
+      </div>
+
+      <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+    </div>
+
+    <div class="sidebar">
+      <div class="donate">
+        <strong>Donate the Author</strong>
+        <!-- можно вставить кнопку или ссылку -->
+      </div>
+      <div class="comment-box">
+        <div class="comment">
+          <strong>Person1:</strong>
+          Lorem Ipsum is simply dummy text of the printing.
+        </div>
+        <div class="comment">
+          <strong>Person1:</strong>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div class="comment">
+          <strong>Person1:</strong>
+          Lorem Ipsum is simply dummy text of the printing.
+        </div>
+        <textarea class="comment-input" placeholder="Join the conversation"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Need help? Contact us!</div>
+
+</body>
+</html>

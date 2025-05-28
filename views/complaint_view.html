@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint - DocAi Check</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #cfd8d6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    .complaint-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-size: 14px;
+      background-color: #f7f7f7;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #888;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    .back-btn {
+      background-color: #eee;
+      color: #333;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>DocAi Check</h1>
+    <h2>Complaint · Document Title: Paper 1</h2>
+    <div class="subheading" style="text-align:center; font-size:14px; color:#555;">Author: John Doe</div>
+
+    <form class="complaint-box" action="complaint_handler.php" method="POST" onsubmit="return validateComplaint()">
+      <label for="complaint">Complaint</label>
+      <textarea name="complaint" id="complaint" placeholder="Add your complaint (minimum 100 characters)..." required></textarea>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="button" class="back-btn" onclick="history.back()">← Back to document</button>
+      </div>
+    </form>
+
+    <div class="footer">Need help? Contact us!</div>
+  </div>
+
+  <script>
+    function validateComplaint() {
+      const text = document.getElementById('complaint').value.trim();
+      if (text.length < 100) {
+        alert("Complaint must be at least 100 characters.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

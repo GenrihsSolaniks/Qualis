@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search - DocAi Check</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #cfd8d6;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px 20px;
+      width: 300px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+      margin-right: 10px;
+    }
+
+    .filter-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter-row select {
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+
+    .content {
+      padding: 0 40px 60px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 260px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card .rating {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .see-more {
+      font-size: 12px;
+      color: #888;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    .profile-bar {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+
+    .profile-bar select {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DocAi Check</h1>
+    <div class="profile-bar">
+      <select>
+        <option>Profile</option>
+        <option>Settings</option>
+        <option>Log out</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+  </div>
+
+  <div class="filter-row">
+    <select><option>Rating</option></select>
+    <select><option>Size</option></select>
+    <select><option>Topic</option></select>
+    <select><option>Date</option></select>
+  </div>
+
+  <div class="content">
+    <h2>Popular this week:</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Paper 1</h3>
+        <div class="rating">Rating: 5</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dolor leo...</p>
+        <div class="see-more">See more...</div>
+      </div>
+      <div class="card">
+        <h3>Paper 2</h3>
+        <div class="rating">Rating: 5</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dolor leo...</p>
+        <div class="see-more">See more...</div>
+      </div>
+      <div class="card">
+        <h3>Paper 3</h3>
+        <div class="rating">Rating: 5</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dolor leo...</p>
+        <div class="see-more">See more...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Need help? Contact us!</div>
+
+</body>
+</html>

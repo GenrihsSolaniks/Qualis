@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up - DocAi Check</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #cfd8d6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .signup-box {
+      background-color: white;
+      border-radius: 16px;
+      padding: 40px 50px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background-color: #f0f0f0;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .phone-inputs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .phone-inputs input {
+      width: 100%;
+    }
+
+    .terms {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .signup-button {
+      background-color: #eee;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .signup-button:hover {
+      background-color: #ddd;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>DocAi Check</h1>
+
+  <div class="signup-box">
+    <h2>Sign up</h2>
+
+    <!-- ✅ Подключено к backend -->
+    <form action="../php/signup.php" method="POST">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="E-mail..." required />
+      </div>
+
+      <!-- Телефон -->
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <div class="phone-inputs">
+          <input type="text" name="country_code" placeholder="Country..." required />
+          <input type="text" name="phone" placeholder="Phone number..." required />
+        </div>
+      </div>
+
+      <!-- Роль -->
+      <div class="form-group">
+        <label for="role">Sign in as:</label>
+        <select name="role" id="role" required>
+          <option value="User">User</option>
+          <option value="Author">Author</option>
+        </select>
+      </div>
+
+      <!-- Условия -->
+      <div class="terms">
+        By signing up, you agree to our <a href="#">Terms</a>. Learn how we collect, use and share your data in our <a href="#">Privacy Policy</a>.
+      </div>
+
+      <!-- Кнопка -->
+      <button type="submit" class="signup-button">Sign up!</button>
+    </form>
+  </div>
+
+  <div class="footer">Need help? Contact us!</div>
+
+</body>
+</html>

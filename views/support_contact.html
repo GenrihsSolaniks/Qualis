@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Support - DocAi Check</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #cfd8d6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .support-form {
+      background-color: #cfd8d6;
+      padding: 40px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background-color: #f7f7f7;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      border-radius: 12px;
+    }
+
+    button {
+      background-color: #888;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="support-form" action="support_handler.php" method="POST" onsubmit="return validateForm()">
+    <h2>Send a Message to Support</h2>
+
+    <div class="form-group">
+      <label for="title">Title of the Issue</label>
+      <input type="text" name="title" id="title" placeholder="Title of the issue..." required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Issue Description</label>
+      <textarea name="description" id="description" placeholder="Provide a detailed description of your issue (minimum 100 characters)..." required></textarea>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      const desc = document.getElementById('description').value;
+      if (desc.trim().length < 100) {
+        alert("Description must be at least 100 characters.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
