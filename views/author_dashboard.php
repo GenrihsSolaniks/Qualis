@@ -1,5 +1,11 @@
 <?php
 require_once '../php/session.php';
+
+if ($_SESSION['user']['role'] !== 'Author') {
+    header("Location: ../views/login.html");
+    exit;
+}
+
 require_once '../config/db.php';
 
 $user_id = $_SESSION['user']['id'];

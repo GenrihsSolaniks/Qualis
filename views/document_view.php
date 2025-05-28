@@ -1,3 +1,44 @@
+<?php
+session_start();
+require_once '../config/db.php';
+
+// Получаем ID работы
+if (!isset($_GET['id'])) {
+  echo "Missing work ID.";
+  exit;
+}
+
+$id = $_GET['id'];
+
+// Обработка комментария
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
+  $comment = $_POST['comment'];
+  $work_id = $_POST['work_id'];
+  $user_email = $_SESSION['user']['email'] ?? 'Anonymous';
+
+  $stmt = $conn->prepare("INSERT INTO comments (work_id, user_email, comment) VALUES (?, ?, ?)");
+  $stmt->execute([$work_id, $user_email, $comment]);
+
+  // После добавления комментария — редирект на эту же страницу
+  header("Location: document_view.php?id=" . $work_id);
+  exit;
+}
+
+// Загружаем саму работу
+$stmt = $conn->prepare("SELECT w.*, u.email AS author_email FROM works w JOIN users u ON w.user_id = u.id WHERE w.id = ?");
+$stmt->execute([$id]);
+$work = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$work) {
+  echo "Work not found.";
+  exit;
+}
+
+// Загружаем комментарии
+$comments_stmt = $conn->prepare("SELECT * FROM comments WHERE work_id = ? ORDER BY created_at DESC");
+$comments_stmt->execute([$id]);
+$comments = $comments_stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,8 +178,8 @@
       </select>
     </div>
 
-    <h1>DocAi Check<br>Document Title: Paper 1</h1>
-    <div class="subheading">Author: John Doe</div>
+    <div class="subheading">Author: <?= htmlspecialchars($work['author_email']) ?></div>
+    <div class="subheading">Title: <?= htmlspecialchars($work['title']) ?></div>
 
     <div class="interaction-bar">
       <button>Like 0</button>
@@ -156,13 +197,25 @@
 
     <div class="topic-box">
       <strong>Topic</strong><br />
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dolor leo. Nunc tempus viverra nibh...</p>
+      <p><?= nl2br(htmlspecialchars($work['content'])) ?></p>
     </div>
 
     <div class="comment-box">
-      <textarea placeholder="Add your comment..."></textarea>
-      <button type="submit">Submit</button>
+      <form method="POST">
+        <input type="hidden" name="work_id" value="<?= $work['id'] ?>">
+        <textarea name="comment" placeholder="Add your comment..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
     </div>
+
+    <?php foreach ($comments as $c): ?>
+      <div class="comment-box">
+        <p><strong><?= htmlspecialchars($c['user_email']) ?>:</strong><br>
+        <?= nl2br(htmlspecialchars($c['comment'])) ?></p>
+        <small><?= $c['created_at'] ?></small>
+      </div>
+    <?php endforeach; ?>
+
 
     <button class="back-button" onclick="history.back()">← Back to reading</button>
   </div>
